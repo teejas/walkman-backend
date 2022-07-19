@@ -41,7 +41,7 @@ jobs:
           context: .
           push: true
           tags: tj1997/walkman-backend:latest
-          build-args:
-            - DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}
-            - SPOTIPY_CLIENT_ID=${{ secrets.SPOTIPY_CLIENT_ID }}
-            - SPOTIPY_CLIENT_SECRET=${{ secrets.SPOTIPY_CLIENT_SECRET }}
+          build-args: |
+            DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}
+            SPOTIPY_CLIENT_ID=${{ secrets.SPOTIPY_CLIENT_ID }}
+            SPOTIPY_CLIENT_SECRET=${{ secrets.SPOTIPY_CLIENT_SECRET }}
