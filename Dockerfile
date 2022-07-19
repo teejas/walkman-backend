@@ -18,6 +18,6 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 # docker build --build-arg DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY --build-arg SPOTIPY_CLIENT_ID=$SPOTIPY_CLIENT_ID --build-arg SPOTIPY_CLIENT_SECRET=$SPOTIPY_CLIENT_SECRET -t test-backend .
