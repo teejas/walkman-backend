@@ -90,3 +90,13 @@ def get_recommendations(request):
         return HttpResponse(json.dumps(rec_uris), content_type="application/json")
 
     return HttpResponse("not a GET request")
+
+@csrf_exempt
+def skip_track(request):
+    if request.method == "POST":
+        data = request.POST
+        device_id = data.get('device_id')
+        spotify.next_track(device_id=device_id)
+        return HttpResponse("skipped track")
+
+    return HttpResponse("not a POST request")
