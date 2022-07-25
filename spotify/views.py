@@ -43,7 +43,11 @@ def get_token(request):
         data = request.POST
         code = data.get('code')
 
-        return HttpResponse(auth_manager.get_access_token(code)['access_token'])
+        if(code and code != "null"):
+            token = auth_manager.get_access_token(code)
+            return HttpResponse(json.dumps(token))
+
+        return HttpResponse("No code")
 
     return HttpResponse("not a POST request")
 
@@ -60,7 +64,6 @@ def connect_device(request):
 
     return HttpResponse("not a GET request")
 
-# route to get recommendations using `vibe` as a seed playlist
 @csrf_exempt
 def get_recommendations(request):
     if request.method == "POST":
