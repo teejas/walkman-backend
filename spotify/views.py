@@ -44,7 +44,7 @@ def get_token(request):
         code = data.get('code')
 
         if(code and code != "null"):
-            token = auth_manager.get_access_token(code)
+            token = auth_manager.get_access_token(code)['access_token']
             return HttpResponse(json.dumps(token))
 
         return HttpResponse("No code")
