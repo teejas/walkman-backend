@@ -108,7 +108,7 @@ def skip_track(request):
 @csrf_exempt
 def get_playlists(request):
     if request.method == "GET":
-        playlists = spotify.current_user_playlists()
+        playlists = spotify.user_playlists(user=spotify.me()['id'])
         playlists_data = []
         allowed_playlists = ["vibe", "motherland", "rock", "comfort", "symph", "funk u", "voiceless"]
         for playlist in playlists['items']:
