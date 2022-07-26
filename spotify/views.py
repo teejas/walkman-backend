@@ -29,9 +29,8 @@ scope = [
 ]
 
 
-auth_manager = spotipy.oauth2.SpotifyOAuth(scope=scope,
-                                            show_dialog=True)
-spotify = spotipy.Spotify(client_credentials_manager=auth_manager)
+auth_manager = spotipy.oauth2.SpotifyOAuth(scope=scope)
+spotify = spotipy.Spotify(auth_manager=auth_manager)
 
 @csrf_exempt
 def get_token(request):
@@ -109,10 +108,12 @@ def skip_track(request):
 @csrf_exempt
 def get_playlists(request):
     if request.method == "GET":
-        playlists = spotify.user_playlists(user=spotify.me()['id'])
+        playlists = spotify.current_user_playlists()
         playlists_data = []
+        allowed_playlists = ["vibe", "motherland", "rock", "comfort", "symph", "funk u", "voiceless"]
         for playlist in playlists['items']:
-            playlists_data.append(playlist)
+            if playlist.get("name") in allowed_playlists:
+                playlists_data.append(playlist)
         return HttpResponse(json.dumps(playlists_data), content_type="application/json")
 
     return HttpResponse("not a GET request")
