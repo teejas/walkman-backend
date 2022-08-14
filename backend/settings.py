@@ -29,11 +29,12 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost", "juko.tejas.wtf", "juko-api.tejas.wtf"]
 ALLOWED_CIDR_NETS = ["10.98.0.0/16"]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://juko.tejas.wtf']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://juko.tejas.wtf', 'https://juko-api.tejas.wtf']
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     'https://juko.tejas.wtf',
+    'https://juko-api.tejas.wtf',
 ]
 
 
